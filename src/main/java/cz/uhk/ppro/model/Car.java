@@ -1,6 +1,8 @@
 package cz.uhk.ppro.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
@@ -15,9 +17,11 @@ public class Car {
     private String spz;
     @NotEmpty(message = "Color is required")
     private String color;
-    @Size(min = 1, max = 5)
+    @Min(value = 1)
+    @Max(value = 5)
     private float tankVolume;
-    @Size(min = 2, max = 9)
+    @Min(value = 2)
+    @Max(value = 9)
     private int numberOfSeats;
 
     public Long getId() {

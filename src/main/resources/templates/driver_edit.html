@@ -7,8 +7,9 @@
 <body>
 <h1 th:text="${edit ? 'Edit Driver' : 'Create Driver'}"></h1>
 <form th:object="${driver}" th:action="${edit ? '/driverUpdate' : '/driverSave'}" method="post">
+    <input type="hidden" th:field="*{id}">
     <p>
-        Personal ID: <input type="text" th:field="*{personalId}" th:readonly="${edit}"/>
+        Personal ID: <input type="text" th:field="*{personalId}"/>
         <span th:if="${#fields.hasErrors('personalId')}" th:errors="*{personalId}"></span>
     </p>
     <p>

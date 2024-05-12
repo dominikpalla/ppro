@@ -25,6 +25,14 @@ public class Driver {
     @Max(value = 80000, message = "Salary must not exceed 80 000")
     private int salary;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public int getPersonalId() {
         return personalId;
     }

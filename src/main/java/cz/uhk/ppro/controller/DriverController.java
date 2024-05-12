@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -23,14 +22,14 @@ public class DriverController {
     }
     
     @GetMapping("/driverDetail/{id}")
-    public String driverDetail(@PathVariable int id, Model model){
+    public String driverDetail(@PathVariable Long id, Model model){
         model.addAttribute("driver", driverService.getDriver(id));
         model.addAttribute("id", id);
         return "driver_detail";
     }
 
     @GetMapping("/driverEdit/{id}")
-    public String driverEdit(@PathVariable int id, Model model){
+    public String driverEdit(@PathVariable Long id, Model model){
         model.addAttribute("driver", driverService.getDriver(id));
         model.addAttribute("edit", true);
         return "driver_edit";
@@ -44,7 +43,7 @@ public class DriverController {
     }
 
     @GetMapping("/driverDelete/{id}")
-    public String driverDelete(@PathVariable int id){
+    public String driverDelete(@PathVariable Long id){
         driverService.deleteDriver(id);
         return "redirect:/";
     }
