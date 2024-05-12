@@ -12,6 +12,13 @@
 </form>
 <span th:text="${param.city}"></span>
 <span th:text="${temp}"></span>
+
+<a th:href="@{/admin}"><h3>Go to Admin portal</h3></a>
+
+<form method="post" th:action="@{/logout}">
+    <input type="submit" value="Logout">
+</form>
+
 <h1>All cars:</h1>
 <a href="/carCreate">Add new Car</a>
 <ul>
