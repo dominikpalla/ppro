@@ -1,21 +1,21 @@
 package cz.uhk.ppro.model;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 public class Driver {
 
-    @NotEmpty(message = "Personal ID is required")
     private int personalId;
 
     @NotEmpty(message = "Name is required")
+    @Size(min = 5, message = "Name must be at least 5 characters long")
     private String name;
 
-    @Size(min = 18, max = 90)
+    @Min(value = 18, message = "Age must be at least 18")
+    @Max(value = 90, message = "Age must not exceed 90")
     private int age;
 
-    @Size(min = 10000, max = 80000)
+    @Min(value = 10000, message = "Salary must be at least 10 000")
+    @Max(value = 80000, message = "Salary must not exceed 80 000")
     private int salary;
 
     public int getPersonalId() {

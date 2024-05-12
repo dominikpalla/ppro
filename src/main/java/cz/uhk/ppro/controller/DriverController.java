@@ -2,9 +2,11 @@ package cz.uhk.ppro.controller;
 
 import cz.uhk.ppro.model.Driver;
 import cz.uhk.ppro.service.DriverService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,13 +50,21 @@ public class DriverController {
     }
 
     @PostMapping("/driverSave")
-    public String driverSave(@ModelAttribute Driver driver){
+    public String driverSave(@Valid Driver driver, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("edit", false);
+            return "driver_edit";
+        }
         driverService.addDriver(driver);
         return "redirect:/";
     }
 
     @PostMapping("/driverUpdate")
-    public String driverUpdate(@ModelAttribute Driver driver){
+    public String driverUpdate(@Valid Driver driver, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("edit", true);
+            return "driver_edit";
+        }
         driverService.updateDriver(driver);
         return "redirect:/";
     }
