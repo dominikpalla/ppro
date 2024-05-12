@@ -26,5 +26,11 @@
         <td th:text="${driver.salary}"></td>
     </tr>
 </table>
+<h2>Driver's cars:</h2>
+<ul>
+    <li th:each="car: ${cars}">
+        <a th:href="@{'/carDetail/' + ${car.id}}"><span th:text="${car.spz}"></span></a>
+    </li>
+</ul>
 </body>
 </html>

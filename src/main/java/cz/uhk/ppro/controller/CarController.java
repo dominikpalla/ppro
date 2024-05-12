@@ -2,6 +2,7 @@ package cz.uhk.ppro.controller;
 
 import cz.uhk.ppro.model.Car;
 import cz.uhk.ppro.service.CarService;
+import cz.uhk.ppro.service.DriverService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class CarController {
 
     private CarService carService;
+    private DriverService driverService;
 
     @Autowired
-    public CarController(CarService carService){
+    public CarController(CarService carService, DriverService driverService){
         this.carService = carService;
+        this.driverService = driverService;
     }
 
     @GetMapping("/carDetail/{id}")
@@ -32,6 +35,7 @@ public class CarController {
     public String carEdit(@PathVariable Long id, Model model){
         model.addAttribute("car", carService.getCar(id));
         model.addAttribute("edit", true);
+        model.addAttribute("drivers", driverService.getAllDrivers());
         return "car_edit";
     }
 
