@@ -1,10 +1,16 @@
 package cz.uhk.ppro.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
+@Entity
+@Table(name = "cars")
 public class Car {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @NotEmpty(message = "SPZ is required")
     private String spz;
     @NotEmpty(message = "Color is required")
@@ -13,6 +19,14 @@ public class Car {
     private float tankVolume;
     @Size(min = 2, max = 9)
     private int numberOfSeats;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getSpz() {
         return spz;

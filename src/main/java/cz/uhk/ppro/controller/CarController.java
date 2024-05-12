@@ -21,14 +21,14 @@ public class CarController {
     }
 
     @GetMapping("/carDetail/{id}")
-    public String carDetail(@PathVariable int id, Model model){
+    public String carDetail(@PathVariable Long id, Model model){
         model.addAttribute("car", carService.getCar(id));
         model.addAttribute("id", id);
         return "car_detail";
     }
 
     @GetMapping("/carEdit/{id}")
-    public String carEdit(@PathVariable int id, Model model){
+    public String carEdit(@PathVariable Long id, Model model){
         model.addAttribute("car", carService.getCar(id));
         model.addAttribute("edit", true);
         return "car_edit";
@@ -42,7 +42,7 @@ public class CarController {
     }
 
     @GetMapping("/carDelete/{id}")
-    public String carDelete(@PathVariable int id){
+    public String carDelete(@PathVariable Long id){
         carService.deleteCar(id);
         return "redirect:/";
     }

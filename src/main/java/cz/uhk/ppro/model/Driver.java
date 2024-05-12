@@ -1,8 +1,15 @@
 package cz.uhk.ppro.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+@Entity
+@Table(name = "drivers")
 public class Driver {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private int personalId;
 

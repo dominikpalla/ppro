@@ -1,31 +1,39 @@
 package cz.uhk.ppro.service;
 
 import cz.uhk.ppro.model.Car;
+import cz.uhk.ppro.repository.CarRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarServiceImpl implements CarService{
 
-    private List<Car> cars = new ArrayList<>();
+    private CarRepository carRepository;
 
-    @Override
-    public List<Car> getAllCars() {
-        return cars;
+    @Autowired
+    public CarServiceImpl(CarRepository carRepository){
+        this.carRepository = carRepository;
     }
 
     @Override
-    public Car getCar(int index) {
-        return cars.get(index);
+    public List<Car> getAllCars() {
+        return carRepository.findAll();
+    }
+
+    @Override
+    public Car getCar(Long index) {
+        return carRepository.findById(index).orElse(null);
     }
 
     @Override
     public boolean addCar(Car car) {
-        int index = getCarIndex(car.getSpz());
-        if(index == -1){
-            cars.add(car);
+        Optional<Car> carDB = carRepository.findById(car.getId());
+        if(carDB.isEmpty()){
+            carRepository.save(car);
             return true;
         }
         return false;
@@ -33,28 +41,22 @@ public class CarServiceImpl implements CarService{
 
     @Override
     public boolean updateCar(Car car) {
-        int index = getCarIndex(car.getSpz());
-        if(index != -1){
-            cars.remove(index);
-            cars.add(car);
+        Optional<Car> carDB = carRepository.findById(car.getId());
+        if(carDB.isPresent()){
+            carRepository.save(car);
             return true;
         }
         return false;
     }
 
     @Override
-    public Car deleteCar(int index) {
-        Car car = cars.get(index);
-        cars.remove(index);
-        return car;
-    }
-
-    private int getCarIndex(String spz) {
-        for(int i = 0; i < cars.size(); i++){
-            if(cars.get(i).getSpz().equalsIgnoreCase(spz)){
-                return i;
-            }
+    public Car deleteCar(Long id) {
+        Optional<Car> carDB = carRepository.findById(id);
+        if(carDB.isPresent()){
+            Car car = carDB.get();
+            carRepository.delete(carDB.get());
+            return car;
         }
-        return -1;
+        return null;
     }
 }
