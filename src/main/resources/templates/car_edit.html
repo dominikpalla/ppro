@@ -9,15 +9,19 @@
 <form th:object="${car}" th:action="${edit ? '/carUpdate' : '/carSave'}" method="post">
     <p>
         License Plate Number: <input type="text" th:field="*{spz}" th:readonly="${edit}"/>
+        <span th:if="${#fields.hasErrors('spz')}" th:errors="*{spz}"></span>
     </p>
     <p>
         Color: <input type="text" th:field="*{color}"/>
+        <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span>
     </p>
     <p>
         Tank Volume: <input type="text" th:field="*{tankVolume}"/>
+        <span th:if="${#fields.hasErrors('tankVolume')}" th:errors="*{tankVolume}"></span>
     </p>
     <p>
         Number of Seats: <input type="text" th:field="*{numberOfSeats}"/>
+        <span th:if="${#fields.hasErrors('numberOfSeats')}" th:errors="*{numberOfSeats}"></span>
     </p>
     <button type="submit">Save</button>
 </form>
