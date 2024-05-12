@@ -30,12 +30,8 @@ public class DriverServiceImpl implements DriverService{
 
     @Override
     public boolean addDriver(Driver driver) {
-        Optional<Driver> driverDB = driverRepository.findById(driver.getId());
-        if(driverDB.isEmpty()){
-            driverRepository.save(driver);
-            return true;
-        }
-        return false;
+        driverRepository.save(driver);
+        return true;
     }
 
     @Override

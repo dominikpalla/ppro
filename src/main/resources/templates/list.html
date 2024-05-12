@@ -8,16 +8,16 @@
 <h1>All cars:</h1>
 <a href="/carCreate">Add new Car</a>
 <ul>
-    <li th:each="car, iter : ${cars}">
-        <a th:href="@{'/carDetail/' + ${iter.index}}"><span th:text="${car.spz}"></span></a>
+    <li th:each="car : ${cars}">
+        <a th:href="@{'/carDetail/' + ${car.id}}"><span th:text="${car.spz}"></span></a>
     </li>
 </ul>
 
 <h1>All drivers:</h1>
 <a href="/driverCreate">Add new Driver</a>
 <ul>
-    <li th:each="driver, iter : ${drivers}">
-        <a th:href="@{'/driverDetail/' + ${iter.index}}"><span th:text="${driver.name}"></span></a>
+    <li th:each="driver : ${drivers}">
+        <a th:href="@{'/driverDetail/' + ${driver.id}}"><span th:text="${driver.name}"></span></a>
     </li>
 </ul>
 </body>

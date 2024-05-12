@@ -24,7 +24,6 @@ public class DriverController {
     @GetMapping("/driverDetail/{id}")
     public String driverDetail(@PathVariable Long id, Model model){
         model.addAttribute("driver", driverService.getDriver(id));
-        model.addAttribute("id", id);
         return "driver_detail";
     }
 

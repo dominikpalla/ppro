@@ -31,12 +31,8 @@ public class CarServiceImpl implements CarService{
 
     @Override
     public boolean addCar(Car car) {
-        Optional<Car> carDB = carRepository.findById(car.getId());
-        if(carDB.isEmpty()){
-            carRepository.save(car);
-            return true;
-        }
-        return false;
+        carRepository.save(car);
+        return true;
     }
 
     @Override

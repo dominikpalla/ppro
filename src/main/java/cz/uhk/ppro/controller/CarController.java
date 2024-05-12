@@ -25,7 +25,6 @@ public class CarController {
     @GetMapping("/carDetail/{id}")
     public String carDetail(@PathVariable Long id, Model model){
         model.addAttribute("car", carService.getCar(id));
-        model.addAttribute("id", id);
         return "car_detail";
     }
 
