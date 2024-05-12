@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1 th:text="${edit ? 'Edit Car' : 'Create Car'}"></h1>
-<form th:object="${car}" th:action="@{/save}" method="post">
+<form th:object="${car}" th:action="${edit ? '/update' : '/save'}" method="post">
     <p>
         License Plate Number: <input type="text" th:field="*{spz}" th:readonly="${edit}"/>
     </p>
