@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${edit ? 'Edit Driver' : 'Create Driver'}"></title>
+</head>
+<body>
+<h1 th:text="${edit ? 'Edit Driver' : 'Create Driver'}"></h1>
+<form th:object="${driver}" th:action="${edit ? '/driverUpdate' : '/driverSave'}" method="post">
+    <p>
+        Personal ID: <input type="text" th:field="*{personalId}" th:readonly="${edit}"/>
+    </p>
+    <p>
+        Full Name: <input type="text" th:field="*{name}"/>
+    </p>
+    <p>
+        Age: <input type="text" th:field="*{age}"/>
+    </p>
+    <p>
+        Salary: <input type="text" th:field="*{salary}"/>
+    </p>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
