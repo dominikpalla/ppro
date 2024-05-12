@@ -1,20 +1,10 @@
 package cz.uhk.ppro.model;
 
-public class Auto {
-
-    private Long id;
+public class Car {
     private String spz;
     private String color;
     private float tankVolume;
     private int numberOfSeats;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getSpz() {
         return spz;

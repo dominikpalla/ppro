@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Details</title>
+</head>
+<body>
+<h1>Car Details</h1>
+<a th:href="@{'/edit/' + ${id}}">Edit Car</a>
+<a th:href="@{'/delete/' + ${id}}">Delete Car</a>
+<table>
+    <tr>
+        <td>License Plate Number:</td>
+        <td th:text="${car.spz}"></td>
+    </tr>
+    <tr>
+        <td>Color:</td>
+        <td th:text="${car.color}"></td>
+    </tr>
+    <tr>
+        <td>Tank Volume:</td>
+        <td th:text="${car.tankVolume}"></td>
+    </tr>
+    <tr>
+        <td>Number of Seats:</td>
+        <td th:text="${car.numberOfSeats}"></td>
+    </tr>
+</table>
+</body>
+</html>

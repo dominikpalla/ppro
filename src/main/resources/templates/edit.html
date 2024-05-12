@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${edit ? 'Edit Car' : 'Create Car'}"></title>
+</head>
+<body>
+<h1 th:text="${edit ? 'Edit Car' : 'Create Car'}"></h1>
+<form th:object="${car}" th:action="@{/save}" method="post">
+    <p>
+        License Plate Number: <input type="text" th:field="*{spz}" th:readonly="${edit}"/>
+    </p>
+    <p>
+        Color: <input type="text" th:field="*{color}"/>
+    </p>
+    <p>
+        Tank Volume: <input type="text" th:field="*{tankVolume}"/>
+    </p>
+    <p>
+        Number of Seats: <input type="text" th:field="*{numberOfSeats}"/>
+    </p>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
