@@ -5,6 +5,13 @@
     <title>Hello</title>
 </head>
 <body>
+<h1>Today's temperature:</h1>
+<form method="get" action="">
+    <input type="text" name="city" placeholder="Enter a city...">
+    <input type="submit" value="Show temperature">
+</form>
+<span th:text="${param.city}"></span>
+<span th:text="${temp}"></span>
 <h1>All cars:</h1>
 <a href="/carCreate">Add new Car</a>
 <ul>
