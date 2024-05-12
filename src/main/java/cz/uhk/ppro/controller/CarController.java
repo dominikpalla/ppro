@@ -43,6 +43,7 @@ public class CarController {
     public String carCreate(Model model){
         model.addAttribute("car", new Car());
         model.addAttribute("edit", false);
+        model.addAttribute("drivers", driverService.getAllDrivers());
         return "car_edit";
     }
 
